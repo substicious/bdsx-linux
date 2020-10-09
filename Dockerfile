@@ -1,3 +1,4 @@
+#################### DEVELOPMENT ####################
 FROM alpine:latest as builder
 
 # CONFIGURE SERVER
