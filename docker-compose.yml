@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    bdsx:
+        container_name: bdsx
+        image: substicious/bdsx-linux:latest
+        ports:
+            - 19132:19132/udp
+            - 19133:19133/udp
+            - 56772:56772/udp
+            - 57863:57863/udp 
+            - 19132:19132/tcp
+            - 19133:19133/tcp
+            - 56772:56772/tcp
+            - 57863:57863/tcp
+        volumes:
+            - /opt/bdsx-data:/data
+        restart: always
+        stdin_open: true
+        tty: true
+    sut:
+        depends_on:
+            - mc
+        image: itzg/mc-monitor:0.6.0
+        command: status-bedrock --host mc --retry-interval 1s --retry-limit 60
+    mc:
+        build:
+            context: .
+        environment:
+            EULA: "TRUE"
