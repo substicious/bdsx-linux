@@ -94,7 +94,8 @@ EXPOSE  19132/udp \
         19133/udp 
 
 EXPOSE  19132/tcp \
-        19133/tcp 
+        19133/tcp \
+        80/tcp
         
 ENV VERSION=LATEST \
     SERVER_PORT=19132
